@@ -29,7 +29,7 @@
                     <li><a href="#design"><i class="iconfont icon-designer"></i>设计资源</a></li>
                     <li><a href="#study"><i class="iconfont icon-xuexi1"></i>学无止境</a></li>
                     <li><a href="#operation"><i class="iconfont icon-yunying"></i>网络运营</a></li>
-                    <li class="download"><a href=""><i class="iconfont icon-github"></i>源码下载(暂不开放)</a></li>
+                    <li class="download"><a href="https://github.com/3X-Room/3X-Room-/archive/master.zip"><i class="iconfont icon-github"></i>源码下载</a></li>
                 </ul>
                 <div class="item comment"><a target="_blank" href="http://www.wangjincheng.top/blog"><i class="iconfont icon-liuyan"></i>Devil的博客</a></div>
             </nav>
@@ -52,7 +52,7 @@
 								
 								
 								<div class="box">
-								<div class="top">
+								<!--<div class="top">
 									<a href="http://news.baidu.com/"><span>新闻</span></a>
 									<a href="http://www.hao123.com/"><span>hao123</span></a>
 									<a href="http://map.baidu.com/"><span>地图</span></a>
@@ -69,24 +69,68 @@
 											<span class="memo">搜索历史</span>
 										</div>
 									</div>
-								</div>
+								</div>-->
 								
 
 									<div class="count">
 										<input type="text" id="text" onFocus="style=" border: #3385FF"" onBlur="" onkeydown="keydown()" />
-										<input type="submit" class="btn" value="百度一下" onclick="message()" />
+										<input type="submit" class="btn" id="but" value="百度一下" onclick="message()" />
 									</div>
+									<div id="show">
+                                    <ul></ul>
 								
 								<div class="footing">
-									<div class="about">
-										<a href="https://www.baidu.com/cache/sethelp/help.html">把3X-Room导航设为主页</a> 
-									</div>
+									<!--<div class="about">
+										<a onclick="this.style.behavior='url(#default#homepage)';this.setHomepage('http://www.wangjincheng.top/')" href="http://www.wangjincheng.top/">把3X-Room导航设为主页</a> 
+									</div>页脚收藏及设为主页
 									<div class="info">
 										<span class="copyright">&copy;2018 Baidu</span>
 										<span class="copyright">免备案</span>
-									</div>
+									</div>-->
 								</div>
 								</div>
+								
+
+
+								<script type="text/javascript" >
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/10 + "px";
+        var inp = document.getElementById('text');
+        var show = document.getElementById('show');
+        var oul = document.getElementById("show").getElementsByTagName('ul')[0];
+        inp.onkeyup = function(){
+
+            if(inp.value){
+                show.style.display="block";
+            }else{
+                show.style.display="none";
+            }
+            var os = document.createElement('script');
+            os.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+inp.value+'&json=1&p=3&sid=1458_21079_18133_20697_20930&req=2&csor=1&cb=figting'
+            document.body.appendChild(os);
+        }
+        var but = document.getElementById('but');
+        but.onclick = function(){
+            var url = 'https://www.baidu.com/s?wd='+inp.value+'&rsv_spt=1&rsv_iqid=0xc918c1cc0000cae8&issp=1&f=8&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=0&rsv_sug3=2&rsv_sug1=2&rsv_sug7=101&inputT=333217&rsv_sug4=333218';
+            window.open(url);
+
+        }
+        function figting(mjson){
+            oul.innerHTML = "";
+            var l = mjson.s;
+            for ( var i = 0;i<l.length;i++) {
+                var oli = document.createElement('li');
+                oli.innerHTML='<a href=https://www.baidu.com/s?wd='+l[i]+'&rsv_spt=1&rsv_iqid=0xc918c1cc0000cae8&issp=1&f=8&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=0&rsv_sug3=2&rsv_sug1=2&rsv_sug7=101&inputT=333217&rsv_sug4=333218>'+l[i]+'</a>'
+                oul.appendChild(oli);
+
+            }
+        }
+    </script>
+								
+								
+								
+								
+								
+								
 								
 								
 								
@@ -594,6 +638,7 @@
             $('html,body').animate({scrollTop:'0px'},800);
         })
         </script>
+		
 </body>
 
 </html>
